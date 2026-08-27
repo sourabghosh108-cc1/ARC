@@ -1,0 +1,137 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue
+}
+
+\begin{document}
+
+\title{From Static Invariance to Dynamic Agency: Test-Time Rank-Stabilized Adaptation and Composite Runtime Grafts for the Abstraction and Reasoning Corpus (ARC-AGI-2 \& ARC-AGI-3)}
+
+\author{Sourab~Ghosh%
+\thanks{Sourab Ghosh is an independent researcher participating in the ARC Prize 2026 Paper Track. (E-mail: submission@arcprize2026.org).}}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+The Abstraction and Reasoning Corpus (ARC) is the premier benchmark for evaluating broad, human-like generalization in artificial intelligence. While contemporary Large Language Models (LLMs) excel at memorized pattern completion, they experience severe degradation when confronted with novel, few-shot transformations (ARC-AGI-2) and dynamic, interactive game environments with strict action-budget penalization (ARC-AGI-3). In this work, we present a unified dual-track cognitive framework: (1) For ARC-AGI-2 (Static Grid Reasoning), we formulate test-time induction via dihedral $D_4 \times \text{Sym}(10)$ invariance transformations, stabilized with Rank-Stabilized Low-Rank Adaptation (rsLoRA, $r=64, \alpha=32$), combined with a KV-cached Constrained Turbo-DFS decoder and dual-attempt consensus portfolio (KGMoN + ProbMul-3), achieving a public leaderboard score of 30.14\%. (2) For ARC-AGI-3 (Dynamic Interactive Reasoning), we construct a high-throughput programmatic ReAct agent powered by a quantized 27B parameter FP8 model with prefix-cached vLLM execution. Crucially, to resolve structural LLM cognitive traps—such as HUD fixation, path sub-optimality, and oscillation loops—we introduce Composite Runtime Grafts (\texttt{hudmask}, \texttt{searchmap}, \texttt{retry\_guard}, \texttt{goalkeep}, \texttt{clickmap}), elevating our ARC-AGI-3 leaderboard score to 1.69 (+14.9\% relative gain). We analyze the theoretical foundations of why low-rank regularization prevents memorization collapse and how programmatic agency transforms LLMs into effective meta-programmers.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Artificial General Intelligence, ARC-AGI-2, ARC-AGI-3, Test-Time Adaptation, rsLoRA, Autonomous Agents, Neuro-Symbolic Grafts, Combinatorial Search.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+François Chollet's formulation of intelligence as \emph{conversion efficiency of prior knowledge to new skills} establishes the Abstraction and Reasoning Corpus (ARC) as a foundational test for General Artificial Intelligence (AGI)~\cite{chollet2019measure}. Unlike standard benchmark evaluations that reward memorization of vast pre-training corpora, ARC tasks explicitly resist memorization and demand synthesis of novel core-knowledge priors.
+
+The ARC Prize 2026 introduces two complementary domains:
+\begin{itemize}
+    \item \textbf{ARC-AGI-2 (Static Few-Shot)}: An agent receives $2$ to $4$ input-output demonstrations ($N \times M \le 30 \times 30$, colors $0-9$) and must synthesize the exact output grid for an unseen test input within two attempts.
+    \item \textbf{ARC-AGI-3 (Dynamic Interactive)}: An agent interacts with novel black-box multi-level puzzle environments on $64 \times 64$ grids (colors $0-15$), penalized quadratically relative to human step counts:
+    \begin{equation}
+        \text{Score}_{\text{level}} = \left( \min\left( \frac{\text{Actions}_{\text{human}}}{\text{Actions}_{\text{agent}}}, 1.0 \right) \right)^2
+    \end{equation}
+\end{itemize}
+
+\section{ARC-AGI-2: Static Invariance Architecture}
+\subsection{Dihedral and Color Symmetry Group}
+To ensure transformation invariance, input-output pairs are augmented across the 8-element dihedral group $D_4$ combined with active color palette permutations $\pi \in \text{Sym}(10)$:
+\begin{equation}
+    \mathcal{T}_{g, \pi}(X, Y) = \left( \pi(g(X)), \pi(g(Y)) \right)
+\end{equation}
+Inferred grids across the $16\times$ augmented instances are projected backwards using $\mathcal{T}_{g, \pi}^{-1}$ prior to consensus aggregation.
+
+\subsection{Rank-Stabilized LoRA (rsLoRA)}
+To avoid representation collapse on 2--4 examples, we apply Rank-Stabilized LoRA (rsLoRA)~\cite{kalajdzievski2023rslora}:
+\begin{equation}
+    \Delta W = \frac{\alpha}{\sqrt{r}} B A
+\end{equation}
+with $r=64, \alpha=32$ across attention and MLP linear projections, optimized for a single 64-step epoch ($\eta_{\text{max}} = 5 \times 10^{-5}$). Loss tensors are decoupled during backward passes to guarantee distributed PyTorch stability.
+
+\subsection{Constrained Turbo-DFS \& Dual Attempt}
+Token sampling is constrained to the 12 task-valid tokens. Sub-trees with negative log-likelihood $\ge -\ln(0.20)$ are pruned with linear KV-cache recycling.
+\begin{itemize}
+    \item \textbf{Attempt 1 (KGMoN Consensus)}: $N_{\text{votes}} - \overline{\text{NLL}}_{\text{aug}}$.
+    \item \textbf{Attempt 2 (ProbMul-3)}: Joint candidate likelihood beam sum.
+\end{itemize}
+
+\section{ARC-AGI-3: Dynamic Agent \& Runtime Grafts}
+\subsection{Inference Architecture}
+ARC-AGI-3 requires high-throughput reasoning. We deploy \texttt{Qwen3.8-27B-FP8} on a local vLLM server~\cite{kwon2023vllm} with prefix caching enabled and a 65k token context window.
+
+\subsection{The 7 Composite Runtime Grafts}
+To resolve systematic LLM cognitive traps, we designed 7 runtime grafts in the \texttt{taaf\_grafts.composite} suite:
+\begin{enumerate}
+    \item \textbf{\texttt{hudmask}}: Dynamically filters 1D boundary strips (timer bars, step meters) from connected component analysis, preventing false UI interaction loops.
+    \item \textbf{\texttt{retry\_guard}}: Tracks state hash history and interrupts cyclic action loops ($A \to B \to A$) that yield zero entropy change.
+    \item \textbf{\texttt{searchmap}}: Injects algorithmic BFS/Dijkstra shortest-path solvers into the sandbox, calculating optimal trajectories to maximize the quadratic efficiency score.
+    \item \textbf{\texttt{clickmap}}: Converts segmented object masks into exact geometric centroids $(r_c, c_c) = (\frac{1}{|S|}\sum r_i, \frac{1}{|S|}\sum c_i)$ for \texttt{ACTION6} coordinates.
+    \item \textbf{\texttt{goalkeep}}: Persists discovered transition laws across level progressions.
+    \item \textbf{\texttt{efficiency}}: Balances exploratory actions against verified physical transitions.
+    \item \textbf{\texttt{shortcircuit}}: Enforces soft-deadline exits ($T_{\text{budget}} - 10\text{m}$) on intractable games to conserve GPU compute.
+\end{enumerate}
+
+\section{Empirical Results}
+\begin{table}[ht]
+\centering
+\caption{ARC-AGI-2 Evaluation Benchmarks}
+\label{tab:arc2}
+\begin{tabular}{lccc}
+\toprule
+Model & Adaptation & Rank ($r$) & Public Score (\%) \\
+\midrule
+Qwen-3-4B & Zero-Shot & --- & 12.40 \\
+Qwen-3-4B & Standard LoRA & $r=256$ & 29.72 \\
+\textbf{notebookagi2 (Ours)} & \textbf{rsLoRA TTFT} & \textbf{$r=64$} & \textbf{30.14} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{ARC-AGI-3 Evaluation Benchmarks}
+\label{tab:arc3}
+\begin{tabular}{lcccc}
+\toprule
+Run & Architecture & Grafts & Actions & Public Score \\
+\midrule
+642agi3 & 27B-FP8 ReAct & None & 1,308 & 1.47 \\
+\textbf{arc3sub2 (Ours)} & \textbf{27B-FP8 ReAct} & \textbf{7 Grafts} & \textbf{326} & \textbf{1.69 (+14.9\%)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Theoretical Discussion}
+\subsection{Low-Rank Regularization in Extreme Sample Regimes}
+When adapting foundation models to $2-4$ examples, standard gradient descent overfits to superficial noise. By enforcing:
+\begin{equation}
+    \|\Delta W\|_F \le \frac{\alpha}{\sqrt{r}} \|B\|_F \|A\|_F
+\end{equation}
+rsLoRA with $r=64$ preserves foundational spatial priors while allowing precise task-specific alignment.
+
+\subsection{Neuro-Symbolic Functional Separation}
+Autoregressive language models lack working memory for multi-step graph search. Decoupling high-level goal synthesis (neural 27B LLM) from exact spatial execution (symbolic \texttt{searchmap}) eliminates execution drift and maximizes human-relative step efficiency.
+
+\section{Conclusion}
+We have presented an integrated framework for the ARC Prize 2026. On ARC-AGI-2, regularized test-time adaptation reaches 30.14\% static accuracy. On ARC-AGI-3, composite runtime grafts eliminate structural cognitive traps, elevating performance to 1.69. This neuro-symbolic synergy provides a robust blueprint for general agentic reasoning.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
