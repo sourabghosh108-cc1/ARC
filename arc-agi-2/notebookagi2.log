@@ -1,0 +1,130 @@
+9.3s 1 /usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+9.3s 2 __import__("pkg_resources").declare_namespace(__name__)
+9.9s 3 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+9.9s 4 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+9.9s 5 0.00s - to python to disable frozen modules.
+9.9s 6 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+10.8s 7 /usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+10.8s 8 __import__("pkg_resources").declare_namespace(__name__)
+11.1s 9 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+11.1s 10 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+11.1s 11 0.00s - to python to disable frozen modules.
+11.1s 12 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+17.0s 13 Found existing installation: tensorflow 2.18.0
+18.6s 14 Uninstalling tensorflow-2.18.0:
+33.6s 15 Successfully uninstalled tensorflow-2.18.0
+34.4s 16 Writing arc_loader.py
+34.4s 17 Writing arc_decoder.py
+34.4s 18 Writing arc_solver.py
+34.4s 19 Writing starter.py
+120.1s 20 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+203.6s 21 🦥 Unsloth Zoo will now patch everything to make training faster!
+214.8s 22 [Rank 0] start!
+215.0s 23 ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+215.0s 24 \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+215.0s 25 O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+215.0s 26 \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+215.0s 27 "-____-"     Free license: http://github.com/unslothai/unsloth
+215.0s 28 Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+233.2s 29 Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+253.8s 30 Loading checkpoint shards:  50%|█████████         | 1/2 [00:31<00:31, 31.15s/it]🦥 Unsloth Zoo will now patch everything to make training faster!
+260.8s 31 [Rank 1] start!
+260.9s 32 ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+260.9s 33 \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+260.9s 34 O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+260.9s 35 \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+260.9s 36 "-____-"     Free license: http://github.com/unslothai/unsloth
+260.9s 37 Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+269.6s 38 Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:01<00:01,  1.48s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:54<00:00, 26.49s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:54<00:00, 27.19s/it]
+269.6s 39 Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.77s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.28s/it]
+277.1s 40 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+295.6s 41 🦥 Unsloth Zoo will now patch everything to make training faster!
+302.3s 42 [Rank 2] start!
+302.5s 43 ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+302.5s 44 \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+302.5s 45 O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+302.5s 46 \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+302.5s 47 "-____-"     Free license: http://github.com/unslothai/unsloth
+302.5s 48 Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+304.7s 49 Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:01<00:01,  1.40s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:02<00:00,  1.06it/s]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:02<00:00,  1.01s/it]
+316.8s 50 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+334.9s 51 🦥 Unsloth Zoo will now patch everything to make training faster!
+341.8s 52 [Rank 3] start!
+342.0s 53 ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+342.0s 54 \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+342.0s 55 O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+342.0s 56 \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+342.0s 57 "-____-"     Free license: http://github.com/unslothai/unsloth
+342.0s 58 Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+344.2s 59 Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:01<00:01,  1.40s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:02<00:00,  1.05it/s]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:02<00:00,  1.02s/it]
+754.3s 60 [Rank 1] finished 0934a4d8 in 479.2s
+754.3s 61 [Rank 1] done!
+1036.2s 62 [Rank 3] finished aa4ec2a5 in 686.9s
+1036.2s 63 [Rank 3] done!
+1281.6s 64 [Rank 0] finished 36a08778 in 1006.4s
+1281.6s 65 [Rank 0] done!
+1463.5s 66 [Rank 2] finished 981571dc in 1153.6s
+1463.5s 67 [Rank 2] done!
+1490.2s 68 *** Load solutions from '/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_solutions.json'...
+1490.2s 69 *** Generating submission for 5 outputs...
+1490.2s 70 *** Benchmark selection algorithms...
+1490.2s 71 ALL_CORRECT: 0.00040 -  0.00015 30x30 [981571dc_0.rot90.rot90.permute8579032416.ex201.out0]
+1490.2s 72 ALL_CORRECT: 0.00031 -  0.00015 30x30 [981571dc_0.rot90.rot90.permute5386701942.ex213.out0]
+1490.2s 73 ALL_CORRECT: 0.00000 -  0.00015 30x30 [981571dc_0.transpose.rot90.permute4907281356.ex210.out0]
+1490.2s 74 ALL_CORRECT: 0.00000 -  0.00015 30x30 [981571dc_0.permute9302675184.ex302.out0]
+1490.2s 75 ALL_CORRECT: 0.00002 -  0.00015 30x30 [981571dc_0.rot90.permute4950812673.ex013.out0]
+1490.2s 76 ALL_CORRECT: 0.00005 -  0.00015 30x30 [981571dc_0.transpose.rot90.rot90.rot90.permute7690351428.ex231.out0]
+1490.2s 77 ALL_CORRECT: 0.00000 -  0.00015 30x30 [981571dc_0.transpose.permute1602397845.ex013.out0]
+1490.2s 78 ALL_CORRECT: 0.00006 -  0.00015 30x30 [981571dc_0.rot90.rot90.rot90.permute1654278039.ex120.out0]
+1490.2s 79 ALL_CORRECT: 0.00018 -  0.00015 30x30 [981571dc_0.transpose.rot90.rot90.permute5436201789.ex301.out0]
+1490.2s 80 ALL_CORRECT: 0.00002 -  0.00015 30x30 [981571dc_0.rot90.permute4281673590.ex213.out0]
+1490.2s 81 ALL_CORRECT: 0.00009 -  0.00015 30x30 [981571dc_0.transpose.permute9180254367.ex230.out0]
+1490.2s 82 ALL_CORRECT: 0.00011 -  0.00015 30x30 [981571dc_0.transpose.rot90.rot90.permute0986123745.ex103.out0]
+1490.2s 83 ALL_CORRECT: 0.00008 -  0.00015 30x30 [981571dc_0.rot90.rot90.rot90.permute4965803712.ex023.out0]
+1490.2s 84 ALL_CORRECT: 0.00006 -  0.00015 30x30 [981571dc_0.transpose.rot90.rot90.rot90.permute6142358709.ex120.out0]
+1490.2s 85 ALL_CORRECT: 0.00014 -  0.00015 30x30 [981571dc_0.permute4150723698.ex312.out0]
+1490.2s 86 ALL_CORRECT: 0.00006 -  0.00015 30x30 [981571dc_0.transpose.rot90.permute5980213764.ex023.out0]
+1490.2s 87 ALL_CORRECT: 0.00014 -  4.06827 26x27 [aa4ec2a5_0.rot90.permute4950812673.ex201.out0]
+1490.2s 88 ALL_CORRECT: 0.00006 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.rot90.rot90.permute6142358709.ex021.out0]
+1490.2s 89 ALL_CORRECT: 0.00039 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.permute4907281356.ex102.out0]
+1490.2s 90 ALL_CORRECT: 0.00034 -  4.06827 26x27 [aa4ec2a5_0.rot90.permute4281673590.ex102.out0]
+1490.2s 91 ALL_CORRECT: 0.00001 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.rot90.permute0986123745.ex021.out0]
+1490.2s 92 ALL_CORRECT: 0.00060 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.permute5980213764.ex102.out0]
+1490.2s 93 ALL_CORRECT: 0.00026 -  4.06827 26x27 [aa4ec2a5_0.permute9302675184.ex012.out0]
+1490.2s 94 ALL_CORRECT: 0.00027 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.rot90.rot90.permute7690351428.ex210.out0]
+1490.2s 95 ALL_CORRECT: 0.00000 -  4.06827 26x27 [aa4ec2a5_0.transpose.rot90.rot90.permute5436201789.ex021.out0]
+1490.2s 96 ALL_CORRECT: 0.00037 -  4.06827 26x27 [aa4ec2a5_0.permute4150723698.ex012.out0]
+1490.2s 97 ALL_CORRECT: 0.25438 - 15.23041 30x30 [36a08778_1.rot90.permute8024967315.ex145203.out0]
+1490.2s 98 ALL_CORRECT: 0.65033 -  2.43583 16x16 [36a08778_0.transpose.rot90.rot90.permute7284135096.ex214530.out0]
+1490.2s 99 ALL_CORRECT: 0.00003 -  2.43583 16x16 [36a08778_0.transpose.rot90.rot90.rot90.permute4965803712.ex420135.out0]
+1490.2s 100 ALL_CORRECT: 0.07853 -  2.43583 16x16 [36a08778_0.transpose.rot90.permute3170468295.ex120534.out0]
+1490.2s 101 ALL_CORRECT: 0.00001 -  2.43583 16x16 [36a08778_0.transpose.rot90.rot90.rot90.permute7568409321.ex152304.out0]
+1490.2s 102 ALL_CORRECT: 0.51522 -  2.43583 16x16 [36a08778_0.transpose.rot90.rot90.permute4281673590.ex401253.out0]
+1490.2s 103 ALL_CORRECT: 0.00343 -  2.43583 16x16 [36a08778_0.rot90.permute1258796043.ex532401.out0]
+1490.2s 104 ALL_CORRECT: 0.00000 -  2.43583 16x16 [36a08778_0.permute6720984531.ex021543.out0]
+1490.2s 105 ALL_CORRECT: 0.01865 -  2.43583 16x16 [36a08778_0.rot90.rot90.permute9302675184.ex105324.out0]
+1490.2s 106 ALL_CORRECT: 0.01749 -  2.43583 16x16 [36a08778_0.transpose.rot90.permute1654278039.ex204513.out0]
+1490.2s 107 ALL_CORRECT: 0.10738 -  2.43583 16x16 [36a08778_0.rot90.rot90.permute7931086254.ex405132.out0]
+1490.2s 108 ALL_CORRECT: 0.00017 -  2.43583 16x16 [36a08778_0.rot90.permute5386701942.ex542013.out0]
+1490.2s 109 ALL_CORRECT: 0.97413 -  2.43583 16x16 [36a08778_0.transpose.permute4950812673.ex132450.out1]
+1490.2s 110 ALL_CORRECT: 0.00000 -  2.43583 16x16 [36a08778_0.permute4150723698.ex031524.out0]
+1490.2s 111 subkeys: 40/85
+1490.2s 112 avg correct beam score:  0.06559
+1490.2s 113 max correct beam score:  0.97413
+1490.2s 114 {'36a08778_0', '981571dc_0', 'aa4ec2a5_0', '36a08778_1'}
+1490.2s 115 acc:   3.0/  4 ('score_full_probmul_3')
+1490.2s 116 {'36a08778_0', '981571dc_0', 'aa4ec2a5_0'}
+1490.2s 117 acc:   2.5/  4 ('score_kgmon')
+1490.2s 118 {'36a08778_0', '981571dc_0', 'aa4ec2a5_0'}
+1490.2s 119 acc:   2.5/  4 ('score_portfolio')
+1490.2s 120 *** Reload score: 2.5
+1494.2s 121 /usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=["remove_papermill_header.RemovePapermillHeader"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.
+1494.2s 122 warn(
+1494.2s 123 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+1494.5s 124 [NbConvertApp] Writing 62992 bytes to __notebook__.ipynb
+1496.7s 125 /usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=["nbconvert.preprocessors.ExtractOutputPreprocessor"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.
+1496.7s 126 warn(
+1496.8s 127 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+1497.8s 128 [NbConvertApp] Writing 488767 bytes to __results__.html
+1500.9s 129 /usr/local/lib/python3.11/dist-packages/nbdev/doclinks.py:20: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+1500.9s 130 import pkg_resources,importlib
